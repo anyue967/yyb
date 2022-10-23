@@ -131,6 +131,7 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# https://docs.djangoproject.com/en/4.1/ref/logging/
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -148,3 +149,15 @@ LOGGING = {
     },
 }
 
+# https://www.coder.work/article/7647169
+# https://www.django-rest-framework.org/api-guide/authentication/#json-web-token-authentication
+# https://django-rest-framework-simplejwt.readthedocs.io/en/latest/getting_started.html#installation
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'EXCEPTION_HANDLER': 'utils.exceptions.global_exception_handler',
+}

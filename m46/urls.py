@@ -14,8 +14,23 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+# 发token的类
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+from user.views import test
+
+tov = TokenObtainPairView.as_view()
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('login/', tov),
+    path('token/', tov, name='token_obtain_pair'),    # 用户名和密码
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('test/', test),
 ]
+
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+# ]
