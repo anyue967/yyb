@@ -17,8 +17,10 @@
 #### git command
    - .gitignore
    - git init
-   - git checkout -b login
+   - git checkout -b login 
+   - git branch -a
    - git checkout master
-   - git branch
+   - git merge login  合并login到master主分支
+
 #### python manage.py runserver
 

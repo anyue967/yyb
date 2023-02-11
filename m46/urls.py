@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+
 # 发token的类
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
